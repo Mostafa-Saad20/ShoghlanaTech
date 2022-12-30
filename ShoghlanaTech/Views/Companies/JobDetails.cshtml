@@ -1,0 +1,70 @@
+﻿@model ShoghlanaTech.Models.Jobs
+
+@{
+    ViewBag.Title = "JobDetails";
+    Layout = "~/Views/Shared/_RecruiterLayout.cshtml";
+}
+
+
+
+<div class="m-5">
+    <h4>تفاصيل الوظيفة</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.Name)
+        </dt>
+        <dd>
+            @ViewBag.CatName
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Salary)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Salary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YearsOfExp)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.YearsOfExp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PublishDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PublishDate)
+        </dd>
+
+
+    </dl>
+    <p>
+        @Html.ActionLink("تعديل", "EditJob", new { @id = Model.ID }, new { @class = "btn btn-warning" }) | 
+        @Html.ActionLink("رجوع", "Jobs") 
+    </p>
+</div>

@@ -1,0 +1,19 @@
+﻿@*Check if User already registered*@
+
+@if (Session["UserName"] != null)
+{
+    <div class="nav-item dropdown px-2">
+        <a class="nav-link dropdown-toggle text-success" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="bi bi-person-fill"></i>
+            @Session["UserName"]
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="~/Account/LogOut">تسجيل الخروج</a>
+        </div>
+    </div>
+
+}
+else // when Not Registered
+{
+    <a href="~/Account/Login" class="btn btn-success my-2 mx-3 my-sm-0"> <i class="bi bi-person-fill"></i> تسجيل الدخول</a>    
+}

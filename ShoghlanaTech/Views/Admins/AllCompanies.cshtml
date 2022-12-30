@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ShoghlanaTech.Models.Company>
+
+@{
+    ViewBag.Title = "AllCompanies";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>All Companies</h2>
+
+<hr>
+
+<table class="table">
+    <tr>
+        <th>
+            Logo
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Address
+        </th>
+        <th>
+            Website
+        </th>
+        <th>
+            Employee Count
+        </th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+
+            <td>
+                <img src="~/Uploads/@Html.DisplayFor(modelItem => item.Image)" width="60" height="50">
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Website)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmpCount)
+            </td>
+        </tr>
+    }
+
+</table>

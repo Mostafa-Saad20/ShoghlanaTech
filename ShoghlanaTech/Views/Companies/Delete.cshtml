@@ -1,0 +1,28 @@
+﻿@model ShoghlanaTech.Models.Company
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_RecruiterLayout.cshtml";
+}
+
+
+<div class="m-5">
+    <h4>هل ترغب في حذف هذه الشركة ؟</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        
+        <dd>
+            <h5>@Html.DisplayFor(model => model.Name)</h5>
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+     }
+</div>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ShoghlanaTech.Models.Jobs>
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<div class="m-5">
+
+    <div class="row">
+
+        <!--Filter-->
+        <div class="col-md-3 bg-light">
+            @Html.Partial("_SideFilterPartial")
+
+        </div>
+
+        <div class="col-md-9">
+            <!--Search-->
+            <form class="form-inline" action="~/Home/Search" method="get">
+                <div class="input-group">
+                    <i class="bi bi-search mt-2"></i>
+                    <input class="form-control mx-2" type="text" style="width:450px" placeholder="ابحث عن وظيفة .." name="title" required>
+                </div>
+            </form>
+
+            <!-- List all Jobs for that category ID -->
+            @foreach (var job in Model)
+            {
+                <div class="py-3 px-3">
+                    <div class="card bg-light">
+                        <h5 class="card-header">
+                            <img src="~/Uploads/@job.Image" width="45" height="45">
+                            @Html.ActionLink(job.Title, "JobDetails", new { @id = job.ID }, new { @class = "pl-2" })
+                        </h5>
+                        <div class="card-body">
+                            <!--trim long description-->
+                            @if (job.Description.Length > 200)
+                            {
+                                <p class="mt-2"> .. @job.Description.Remove(150)</p>
+                            }
+                            else
+                            { <p class="mt-2">@job.Description </p>}
+                            <p>
+                                <i class="bi bi-briefcase-fill"></i> @job.Type
+                            </p>
+                            <p>
+                                <i class="bi bi-cash-stack"></i> @job.Salary
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ShoghlanaTech.Models.Jobs>
+
+@{
+    ViewBag.Title = "Jobs";
+    Layout = "~/Views/Shared/_RecruiterLayout.cshtml";
+}
+
+<div class="m-5">
+
+    <h4>كل الوظائف</h4>
+
+
+    <p>
+        @Html.ActionLink("إضافة وظيفة جديدة", "CreateJob")
+    </p>
+
+    @if (Model.Count() == 0)
+    {
+        <h4>أنت لم تقم بإضافة أي وظيفة حتى الآن</h4>
+
+    }
+    else
+    {
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PublishDate)
+                </th>
+                <th></th>
+            </tr>
+
+         @foreach (var item in Model)
+          {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PublishDate)
+                </td>
+                <td>
+                    <a href="~/Companies/EditJob/@item.ID"><i class="bi bi-pencil-fill"></i> </a> |
+                    <a href="~/Companies/DeleteJob/@item.ID"><i class="bi bi-trash3-fill"></i> </a> |
+                    <a href="~/Companies/JobDetails/@item.ID">Details</a>
+
+                </td>
+            </tr>
+          }
+
+        </table>
+    }
+</div>

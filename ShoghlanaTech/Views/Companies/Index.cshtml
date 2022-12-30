@@ -1,0 +1,57 @@
+﻿@model ShoghlanaTech.Models.Company
+
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_RecruiterLayout.cshtml";
+}
+
+
+<div class="m-5">
+
+    <div class="row px-3">
+
+        <img src="~/Uploads/@Html.DisplayFor(model => model.Image)" width="50" height="40">
+
+        <h4 class="px-2">@Html.DisplayFor(model => model.Name)</h4>
+
+        <a href="~/Companies/Edit"><i class="bi bi-pencil-fill"></i></a>
+    </div>
+    
+    <hr />
+
+        <h5>
+            @Html.DisplayNameFor(model => model.Description)
+        </h5>
+
+        <p>
+            @Html.DisplayFor(model => model.Description)
+        </p>
+            
+        <h5>
+            العنوان
+        </h5>
+
+        <p>
+            @Html.DisplayFor(model => model.Address)
+        </p>
+
+        <h5>
+            الموقع الألكتروني
+        </h5>
+
+        <p>
+            @Html.DisplayFor(model => model.Website)
+        </p>
+
+        <h5>
+            @Html.DisplayNameFor(model => model.EmpCount)
+        </h5>
+
+        <p>
+            @Html.DisplayFor(model => model.EmpCount)
+        </p>
+
+    <p>
+        @Html.ActionLink("إضافة وظيفة جديدة", "CreateJob", null, new { @class = "btn btn-warning" })
+    </p>
+</div>

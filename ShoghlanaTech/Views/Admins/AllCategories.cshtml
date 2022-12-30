@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ShoghlanaTech.Models.Category>
+
+@{
+    ViewBag.Title = "أنـواع الوظـائـف";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="m-5">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Job Categories</h3>
+        </div>
+        <div class="col-md-6">
+            <p>
+                @Html.ActionLink("Create new category", "CreateCategory")
+            </p>
+        </div>
+    </div>
+
+    <table class="table">
+        <tr>
+            <th>
+                Image
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="~/Uploads/@Html.DisplayFor(modelItem => item.Image)" width="50" height="50">
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditCategory", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "CategoryDetails", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "DeleteCategory", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

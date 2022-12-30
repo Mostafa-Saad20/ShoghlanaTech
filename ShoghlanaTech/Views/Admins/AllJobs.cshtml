@@ -1,0 +1,68 @@
+﻿@model IEnumerable<ShoghlanaTech.Models.Jobs>
+
+@{
+    ViewBag.Title = "AllJobs";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 >All Jobs</h2>
+
+<hr>
+
+<table class="table">
+    <tr>
+        <th class="text-primary">
+            Category
+        </th>
+        <th class="text-primary">
+            Title
+        </th>
+        <th class="text-primary">
+            Description
+        </th>
+        <th class="text-primary">
+            Type
+        </th>
+        <th class="text-primary">
+            Salary
+        </th>
+        <th class="text-primary">
+            Years of Experience
+        </th>
+        <th class="text-primary">
+            Published at
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @if (item.Description.Length > 100)
+             {
+                @item.Description.Remove(90)
+             }
+            else
+            { @Html.DisplayFor(modelItem => item.Description) }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Salary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.YearsOfExp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PublishDate)
+        </td>
+    </tr>
+}
+
+</table>

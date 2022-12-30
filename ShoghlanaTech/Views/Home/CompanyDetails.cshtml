@@ -1,0 +1,95 @@
+﻿@model ShoghlanaTech.Models.Company
+
+@{
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CompanyDetails</title>
+</head>
+<body>
+
+    <div class="m-5">
+
+        <h4>
+            <img src="~/Uploads/@Html.DisplayFor(model => model.Image)" width="50" height="50">
+            @Html.DisplayFor(model => model.Name)
+        </h4>
+        <hr />
+
+        <dl class="dl-horizontal">
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EmpCount)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.EmpCount)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dd>
+                <i class="bi bi-geo-alt-fill"></i>
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+
+            <dd>
+                <i class="bi bi-envelope"></i>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dd>
+                <i class="bi bi-globe2"></i>
+                @Html.DisplayFor(model => model.Website)
+            </dd>
+
+        </dl>
+
+        <hr/>
+
+        <!--List All Jobs -->
+        <h5>الوظائف المعلنة</h5>
+
+        <!-- List all Jobs for that category ID -->
+        @foreach (var job in ViewBag.Jobs)
+         {
+            <div class="py-3 px-3">
+                <div class="card bg-light">
+                    <h5 class="card-header">
+                        <img src="~/Uploads/@job.Image" width="45" height="45">
+                        <a href="~/Home/JobDetails/@job.ID" class="pl-2">@job.Title</a>
+                    </h5>
+                    <div class="card-body">
+                        <!--trim long description-->
+                        @if (job.Description.Length > 200)
+                        {
+                            <p class="mt-2"> .. @job.Description.Remove(150)</p>
+                        }
+                        else
+                        { <p class="mt-2">@job.Description </p>}
+                        <p>
+                            <i class="bi bi-briefcase-fill"></i> @job.Type
+                        </p>
+                        <p>
+                            <i class="bi bi-cash-stack"></i> @job.Salary
+                        </p>
+                    </div>
+                </div>
+            </div>
+         }
+
+
+    </div>
+
+</body>
+</html>

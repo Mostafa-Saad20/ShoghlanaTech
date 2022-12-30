@@ -1,0 +1,75 @@
+﻿@model ShoghlanaTech.Models.Jobs
+
+@{
+    ViewBag.Title = "Create Job";
+    Layout = "~/Views/Shared/_RecruiterLayout.cshtml";
+}
+
+
+<div class="m-5">
+    @using (Html.BeginForm("CreateJob", "Companies", FormMethod.Post, new { enctype = "multipart/form-data" }))
+     {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>إضافة وظيفة جديدة</h4>
+            <hr />
+
+            <div class="form-group ">
+                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } }) <br>
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("Type", new SelectList(new[] { "Full Time", "Part Time", "Remote" }), new { @class = "form-control" }) <br>
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Salary, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Salary, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Salary, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.YearsOfExp, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("YearsOfExp", new SelectList(new[] { "0 - 2", "3 - 6", "7 - 10", "more than 10" }), new { @class = "form-control" }) <br>
+                    @Html.ValidationMessageFor(model => model.YearsOfExp, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CategoryID, "مجال الوظيفة", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("CategoryID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="حفظ" class="btn btn-warning" />
+                </div>
+            </div>
+        </div>
+     }
+
+</div>
